@@ -21,7 +21,7 @@ public class Employee implements Serializable {
     private String login;
     private String password;
     private Gender gender;
-    private String specialty;
+    private String speciality;
     private String role;
     private String employeeSector_id;
 
@@ -29,7 +29,7 @@ public class Employee implements Serializable {
         return serialVersionUID;
     }
 
-    public Employee(int employee_id, String name, String surname, String email, String login, String password, Gender gender, String specialty, String role, String employeeSector_id) {
+    public Employee(int employee_id, String name, String surname, String email, String login, String password, Gender gender, String speciality, String role, String employeeSector_id) {
         this.employee_id = employee_id;
         this.name = name;
         this.surname = surname;
@@ -37,7 +37,7 @@ public class Employee implements Serializable {
         this.login = login;
         this.password = password;
         this.gender = gender;
-        this.specialty = specialty;
+        this.speciality = speciality;
         this.role = role;
         this.employeeSector_id = employeeSector_id;
     }
@@ -98,12 +98,12 @@ public class Employee implements Serializable {
         this.gender = gender;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     public String getRole() {
@@ -140,13 +140,13 @@ public class Employee implements Serializable {
         if (!login.equals(employee.login)) return false;
         if (!password.equals(employee.password)) return false;
         if (gender != employee.gender) return false;
-        if (!specialty.equals(employee.specialty)) return false;
+        if (!speciality.equals(employee.speciality)) return false;
         return role.equals(employee.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employee_id, name, surname, email, login, password, gender, specialty, role, employeeSector_id);
+        return Objects.hash(employee_id, name, surname, email, login, password, gender, speciality, role, employeeSector_id);
     }
 
     @Override
@@ -159,7 +159,7 @@ public class Employee implements Serializable {
         sb.append(", login='").append(login).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append(", gender=").append(gender);
-        sb.append(", specialty='").append(specialty).append('\'');
+        sb.append(", speciality='").append(speciality).append('\'');
         sb.append(", role='").append(role).append('\'');
         sb.append(", employeeSector_id=").append(employeeSector_id);
         sb.append('}');
