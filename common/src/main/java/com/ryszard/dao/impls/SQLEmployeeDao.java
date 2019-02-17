@@ -16,9 +16,7 @@ import java.util.List;
 public class SQLEmployeeDao implements EmployeeDAO {
     private static final String DELETE_BY_ID = "DELETE FROM employee WHERE employee_id = ?";
     private static final String SELECT_SPECIFIC_EMPLOYEE = "SELECT * FROM employee WHERE  login = ? AND name = ?";
-
     private static final String SELECT_BY_ID = "SELECT * FROM employee WHERE employee_id = ?";
-
     private static final String SELECT_ALL_EMPLOYEES = "SELECT * FROM employee";
     private static final String SELECT_EMPLOYEE = "SELECT * FROM employee WHERE  login = ? and password = ?";
     private static final String UPDATE_EMPLOYEE = "UPDATE employee SET password = ? WHERE employee_id = ? LIMIT 1";
@@ -58,7 +56,6 @@ public class SQLEmployeeDao implements EmployeeDAO {
             statement.setString(1, login);
             statement.setString(2, password);
             ResultSet set = statement.executeQuery();
-
             if (set.next()) {
                 return true;
             } else {
@@ -68,7 +65,6 @@ public class SQLEmployeeDao implements EmployeeDAO {
             throw new DaoException("Exception", e);
         }
     }
-
 
     private Employee getEmployeeFromResultSet(ResultSet set) throws DaoException {
         try {
@@ -109,8 +105,6 @@ public class SQLEmployeeDao implements EmployeeDAO {
         }
         return employeeList;
     }
-
-
     @Override
     public boolean delete(Long id) throws DaoException {
         try (Connection connect = pool.getConnection();
@@ -133,7 +127,6 @@ public class SQLEmployeeDao implements EmployeeDAO {
      */
     @Override
     public Employee findById(Long id) throws DaoException {
-
         try (Connection connect = pool.getConnection();
              PreparedStatement statement = connect.prepareStatement(SELECT_BY_ID)) {
             statement.setLong(1, id);
@@ -192,10 +185,7 @@ public class SQLEmployeeDao implements EmployeeDAO {
             statement.setString(6, newEmployee.getLogin());
             statement.setString(7, newEmployee.getPassword());
             statement.setString(8, newEmployee.getEmployeeSector_id());
-
-
             statement.executeUpdate();
-
             ResultSet set = statementTwo.executeQuery();
             set.next();
             return set.getInt(LAST_ID_ATTRIBUTE);
@@ -203,14 +193,11 @@ public class SQLEmployeeDao implements EmployeeDAO {
             throw new DaoException("Exception", e);
         }
     }
-
     @Override
     public Long update(Employee entity) throws DaoException {
         try (Connection connect = pool.getConnection();
              PreparedStatement statement = connect.prepareStatement(UPDATE_EMPLOYEE)) {
-
             statement.setString(1, entity.getPassword());
-
             int rows = statement.executeUpdate();
             return 0L;
         } catch (SQLException | ConnectionPoolException e) {

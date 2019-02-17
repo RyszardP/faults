@@ -67,6 +67,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>errorpasw</servlet-name>
+        <jsp-file>/WEB-INF/jsp/util/errorpasw.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>errorpasw</servlet-name>
+        <url-pattern>/errorpasw</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>main</servlet-name>
         <jsp-file>/WEB-INF/jsp/main.jsp</jsp-file>
     </servlet>
@@ -92,6 +101,8 @@
         <servlet-name>index</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+    
+
 
     <listener>
         <listener-class>

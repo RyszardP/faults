@@ -20,7 +20,7 @@ public class EditPasswordCommand  implements CommandInterface {
     private static final DaoFactory factory = DaoFactory.getDaoFactory();
     private static final EmployeeDAO employeeDAO = factory.getEmployeeDao();
 
-    private static final String EMPLOYEE_ID = "userIdFA";
+    private static final String EMPLOYEE_ID = "employee_id";
     private static final String PASSWORD = "password";
 
     private static final String ACTION = "action";
@@ -53,11 +53,11 @@ public class EditPasswordCommand  implements CommandInterface {
             employee.setPassword(password);
             SERVICE_EMPLOYEE.update(employee);
             request.setAttribute(ACTION, REDIRECT_ACTION_ATTRIBUTE);
-            page = ADMIN;
+            page = PagePath.ADMIN;
         } catch (ValidationException e) {
             request.setAttribute(ERROR_FLAG, ERROR_FLAG_VALUE);
             request.setAttribute(ACTION, FORWARD_ACTION_ATTRIBUTE);
-            page = PagePath.ERROR;
+            page = PagePath.ERRORPASW;
         } catch (Exception e) {
             throw new CommandException("Command Exception", e);
         }
